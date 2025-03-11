@@ -19,11 +19,11 @@ package org.springframework.boot.autoconfigure.session;
 import java.util.Collections;
 import java.util.function.Consumer;
 
-import org.springframework.boot.autoconfigure.web.server.reactive.MockReactiveWebServerFactory;
 import org.springframework.boot.test.context.assertj.AssertableReactiveWebApplicationContext;
 import org.springframework.boot.test.context.assertj.AssertableWebApplicationContext;
 import org.springframework.boot.test.context.runner.ContextConsumer;
 import org.springframework.boot.web.reactive.context.ReactiveWebApplicationContext;
+import org.springframework.boot.web.server.reactive.MockReactiveWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mock.http.server.reactive.MockServerHttpRequest;
