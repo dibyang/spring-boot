@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  *
  * @author Christoph Dreis
  */
-@ClassPathOverrides("org.springframework:spring-context:4.1.0.RELEASE")
+@ClassPathOverrides("net.xdob.springframework:spring-context:5.3.39")
 class ModifiedClassPathExtensionOverridesTests {
 
 	@Test

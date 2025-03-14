@@ -16,8 +16,8 @@ dependencies {
 	api("org.mockito:mockito-core")
 	api("org.mockito:mockito-junit-jupiter")
 	api("org.skyscreamer:jsonassert")
-	api("org.springframework:spring-core")
-	api("org.springframework:spring-test")
+	api("net.xdob.springframework:spring-core")
+	api("net.xdob.springframework:spring-test")
 	api("org.xmlunit:xmlunit-core") {
 		exclude group: "javax.xml.bind", module: "jaxb-api"
 	}

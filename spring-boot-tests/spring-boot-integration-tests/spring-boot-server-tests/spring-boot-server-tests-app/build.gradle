@@ -52,7 +52,7 @@ dependencies {
 	compileOnly("org.eclipse.jetty:jetty-server")
 
 	implementation("org.springframework.boot:spring-boot-starter")
-	implementation("org.springframework:spring-web")
+	implementation("net.xdob.springframework:spring-web")
 
 	jetty("org.springframework.boot:spring-boot-starter-jetty")
 	jetty files(resourcesJar)

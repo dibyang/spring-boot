@@ -20,7 +20,7 @@ dependencies {
 	compileOnlyProject(project(":spring-boot-project:spring-boot"))
 	compileOnly("jakarta.servlet:jakarta.servlet-api")
 	compileOnly("org.codehaus.groovy:groovy-templates")
-	compileOnly("org.springframework:spring-web")
+	compileOnly("net.xdob.springframework:spring-web")
 
 	dependenciesBom(project(path: ":spring-boot-project:spring-boot-dependencies", configuration: "effectiveBom"))
 
@@ -51,14 +51,14 @@ dependencies {
 		exclude group: "javax.enterprise", module: "cdi-api"
 		exclude group: "org.sonatype.sisu", module: "sisu-inject-bean"
 	}
-	implementation("org.springframework:spring-core")
+	implementation("net.xdob.springframework:spring-core")
 	implementation("org.springframework.security:spring-security-crypto")
 
 	intTestImplementation(project(":spring-boot-project:spring-boot-tools:spring-boot-loader-tools"))
 	intTestImplementation(project(":spring-boot-project:spring-boot-tools:spring-boot-test-support"))
 	intTestImplementation("org.assertj:assertj-core")
 	intTestImplementation("org.junit.jupiter:junit-jupiter")
-	intTestImplementation("org.springframework:spring-core")
+	intTestImplementation("net.xdob.springframework:spring-core")
 
 	loader(project(":spring-boot-project:spring-boot-tools:spring-boot-loader"))
 
@@ -71,7 +71,7 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter")
 	testImplementation("org.mockito:mockito-core")
 	testImplementation("org.mockito:mockito-junit-jupiter")
-	testImplementation("org.springframework:spring-test")
+	testImplementation("net.xdob.springframework:spring-test")
 
 	testRepository(project(path: ":spring-boot-project:spring-boot-starters:spring-boot-starter-actuator", configuration: "mavenRepository"))
 	testRepository(project(path: ":spring-boot-project:spring-boot-starters:spring-boot-starter-amqp", configuration: "mavenRepository"))

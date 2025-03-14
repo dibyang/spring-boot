@@ -8,7 +8,7 @@ description = "Spring Boot Layers Tools"
 
 dependencies {
 	implementation(project(":spring-boot-project:spring-boot-tools:spring-boot-loader"))
-	implementation("org.springframework:spring-core")
+	implementation("net.xdob.springframework:spring-core")
 
 	testImplementation("org.assertj:assertj-core")
 	testImplementation("org.junit.jupiter:junit-jupiter")

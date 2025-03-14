@@ -6,6 +6,6 @@ description = "Starter for aspect-oriented programming with Spring AOP and Aspec
 
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework:spring-aop")
+	api("net.xdob.springframework:spring-aop")
 	api("org.aspectj:aspectjweaver")
 }

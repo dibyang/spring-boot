@@ -4,7 +4,13 @@ plugins {
 
 description = "Starter for using Neo4j graph database and Spring Data Neo4j"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework.data:spring-data-neo4j")
+	api("org.springframework.data:spring-data-neo4j"){
+		exclude group: "org.springframework"
+	}
 }

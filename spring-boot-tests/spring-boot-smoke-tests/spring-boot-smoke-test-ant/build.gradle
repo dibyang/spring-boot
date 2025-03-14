@@ -36,7 +36,7 @@ dependencies {
 	testImplementation(project(path: ":spring-boot-project:spring-boot-tools:spring-boot-loader-tools"))
 	testImplementation("org.assertj:assertj-core")
 	testImplementation("org.junit.jupiter:junit-jupiter")
-	testImplementation("org.springframework:spring-core")
+	testImplementation("net.xdob.springframework:spring-core")
 }
 
 task syncTestRepository(type: Sync) {

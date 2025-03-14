@@ -59,7 +59,7 @@ class ModifiedClassPathExtensionOverridesParameterizedTests {
 		return Stream.of(Arguments.of(new Object[] { types }));
 	}
 
-	@ClassPathOverrides("org.springframework:spring-context:4.1.0.RELEASE")
+	@ClassPathOverrides("net.xdob.springframework:spring-context:5.3.39")
 	static class ClassWithOverride {
 
 	}

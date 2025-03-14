@@ -91,7 +91,7 @@ class OptionalDependenciesPluginIntegrationTests {
 			out.println("    mavenCentral()");
 			out.println("}");
 			out.println("dependencies {");
-			out.println("    optional 'org.springframework:spring-jcl:5.1.2.RELEASE'");
+			out.println("    optional 'net.xdob.springframework:spring-jcl:5.3.39'");
 			out.println("}");
 			out.println("task printClasspath {");
 			out.println("    doLast {");

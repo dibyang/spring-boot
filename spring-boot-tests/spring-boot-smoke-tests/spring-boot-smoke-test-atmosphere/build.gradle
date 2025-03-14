@@ -13,5 +13,5 @@ dependencies {
 
 	testImplementation(enforcedPlatform(project(":spring-boot-project:spring-boot-dependencies")))
 	testImplementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-test"))
-	testImplementation("org.springframework:spring-websocket")
+	testImplementation("net.xdob.springframework:spring-websocket")
 }

@@ -13,7 +13,7 @@ dependencies {
 	if (JavaVersion.current().java9Compatible) {
 		implementation("jakarta.xml.bind:jakarta.xml.bind-api")
 	}
-	implementation("org.springframework:spring-jms")
+	implementation("net.xdob.springframework:spring-jms")
 
 	runtimeOnly("com.h2database:h2")
 	runtimeOnly("org.apache.activemq:artemis-jms-server") {

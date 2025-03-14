@@ -4,9 +4,15 @@ plugins {
 
 description = "Starter for using Spring Data R2DBC"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework.data:spring-data-r2dbc")
+	api("org.springframework.data:spring-data-r2dbc"){
+		exclude group: "org.springframework"
+	}
 	api("io.r2dbc:r2dbc-spi")
 	api("io.r2dbc:r2dbc-pool")
 }

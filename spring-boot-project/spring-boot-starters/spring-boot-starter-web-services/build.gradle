@@ -10,6 +10,8 @@ dependencies {
 	api("jakarta.xml.ws:jakarta.xml.ws-api") {
 		exclude group: "jakarta.activation", module: "jakarta.activation-api"
 	}
-	api("org.springframework:spring-oxm")
-	api("org.springframework.ws:spring-ws-core")
+	api("net.xdob.springframework:spring-oxm")
+	api("org.springframework.ws:spring-ws-core"){
+		exclude group: "org.springframework"
+	}
 }

@@ -4,7 +4,13 @@ plugins {
 
 description = "Starter for building hypermedia-based RESTful web application with Spring MVC and Spring HATEOAS"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-web"))
-	api("org.springframework.hateoas:spring-hateoas")
+	api("org.springframework.hateoas:spring-hateoas"){
+		exclude group: "org.springframework"
+	}
 }

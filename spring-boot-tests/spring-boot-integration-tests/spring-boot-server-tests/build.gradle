@@ -17,7 +17,7 @@ dependencies {
 		exclude group: "commons-logging", module: "commons-logging"
 	}
 	intTestImplementation("org.awaitility:awaitility")
-	intTestImplementation("org.springframework:spring-web")
+	intTestImplementation("net.xdob.springframework:spring-web")
 
 	testRepository(project(path: ":spring-boot-project:spring-boot-dependencies", configuration: "mavenRepository"))
 	testRepository(project(path: ":spring-boot-project:spring-boot-tools:spring-boot-gradle-plugin", configuration: "mavenRepository"))

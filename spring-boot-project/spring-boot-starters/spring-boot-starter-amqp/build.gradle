@@ -4,8 +4,14 @@ plugins {
 
 description = "Starter for using Spring AMQP and Rabbit MQ"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework:spring-messaging")
-	api("org.springframework.amqp:spring-rabbit")
+	api("net.xdob.springframework:spring-messaging")
+	api("org.springframework.amqp:spring-rabbit"){
+		exclude group: "org.springframework"
+	}
 }

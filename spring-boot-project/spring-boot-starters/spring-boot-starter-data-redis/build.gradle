@@ -4,8 +4,14 @@ plugins {
 
 description = "Starter for using Redis key-value data store with Spring Data Redis and the Lettuce client"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework.data:spring-data-redis")
+	api("org.springframework.data:spring-data-redis"){
+		exclude group: "org.springframework"
+	}
 	api("io.lettuce:lettuce-core")
 }

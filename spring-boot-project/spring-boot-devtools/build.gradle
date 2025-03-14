@@ -39,7 +39,7 @@ dependencies {
 	intTestImplementation("org.junit.jupiter:junit-jupiter")
 	intTestImplementation("net.bytebuddy:byte-buddy")
 
-	intTestRuntimeOnly("org.springframework:spring-web")
+	intTestRuntimeOnly("net.xdob.springframework:spring-web")
 
 	optional("io.projectreactor:reactor-core")
 	optional("io.r2dbc:r2dbc-spi")
@@ -52,9 +52,9 @@ dependencies {
 		exclude group: "javax.xml.bind", module:"jaxb-api"
 		exclude group: "org.jboss.spec.javax.transaction", module:"jboss-transaction-api_1.2_spec"
 	}
-	optional("org.springframework:spring-jdbc")
-	optional("org.springframework:spring-orm")
-	optional("org.springframework:spring-web")
+	optional("net.xdob.springframework:spring-jdbc")
+	optional("net.xdob.springframework:spring-orm")
+	optional("net.xdob.springframework:spring-web")
 	optional("org.springframework.security:spring-security-config")
 	optional("org.springframework.security:spring-security-web")
 	optional("org.springframework.data:spring-data-redis")
@@ -78,9 +78,9 @@ dependencies {
 	testImplementation("org.mockito:mockito-core")
 	testImplementation("org.mockito:mockito-junit-jupiter")
 	testImplementation("org.postgresql:postgresql")
-	testImplementation("org.springframework:spring-test")
-	testImplementation("org.springframework:spring-webmvc")
-	testImplementation("org.springframework:spring-websocket")
+	testImplementation("net.xdob.springframework:spring-test")
+	testImplementation("net.xdob.springframework:spring-webmvc")
+	testImplementation("net.xdob.springframework:spring-websocket")
 	testImplementation("org.springframework.hateoas:spring-hateoas")
 	testImplementation("org.springframework.security:spring-security-test")
 	testImplementation("org.freemarker:freemarker")

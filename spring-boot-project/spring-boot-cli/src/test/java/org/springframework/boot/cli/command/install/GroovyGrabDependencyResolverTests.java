@@ -94,9 +94,9 @@ class GroovyGrabDependencyResolverTests {
 
 	@Test
 	void resolveArtifactWithDependencies() throws Exception {
-		List<File> resolved = this.resolver.resolve(Arrays.asList("org.springframework:spring-core:4.1.1.RELEASE"));
+		List<File> resolved = this.resolver.resolve(Arrays.asList("net.xdob.springframework:spring-core:5.3.39"));
 		assertThat(resolved).hasSize(2);
-		assertThat(getNames(resolved)).containsOnly("commons-logging-1.1.3.jar", "spring-core-4.1.1.RELEASE.jar");
+		assertThat(getNames(resolved)).containsOnly("commons-logging-1.1.3.jar", "spring-core-5.3.39.jar");
 	}
 
 	@Test

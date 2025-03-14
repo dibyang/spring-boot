@@ -1760,7 +1760,7 @@ bom {
 			versionRange "[6.0.0-M1,)"
 			because "we upgrade in Spring Boot 3.x"
 		}
-		group("org.springframework") {
+		group("net.xdob.springframework") {
 			imports = [
 				"spring-framework-bom"
 			]

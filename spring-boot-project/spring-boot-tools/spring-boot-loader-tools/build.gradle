@@ -21,7 +21,7 @@ configurations {
 
 dependencies {
 	api("org.apache.commons:commons-compress")
-	api("org.springframework:spring-core")
+	api("net.xdob.springframework:spring-core")
 
 	compileOnly("ch.qos.logback:logback-classic")
 

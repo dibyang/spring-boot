@@ -14,7 +14,7 @@ dependencies {
 	api("org.apache.httpcomponents:httpclient") {
 		exclude(group: "commons-logging", module: "commons-logging")
 	}
-	api("org.springframework:spring-core")
+	api("net.xdob.springframework:spring-core")
 	api("org.tomlj:tomlj:1.0.0")
 	
 	testImplementation(project(":spring-boot-project:spring-boot-tools:spring-boot-test-support"))

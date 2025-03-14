@@ -4,8 +4,14 @@ plugins {
 
 description = "Starter for using Cassandra distributed database and Spring Data Cassandra"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	api("org.springframework:spring-tx")
-	api("org.springframework.data:spring-data-cassandra")
+	api("net.xdob.springframework:spring-tx")
+	api("org.springframework.data:spring-data-cassandra"){
+		exclude group:"org.springframework"
+	}
 }

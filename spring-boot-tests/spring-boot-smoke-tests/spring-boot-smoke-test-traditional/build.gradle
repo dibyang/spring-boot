@@ -13,7 +13,7 @@ configurations {
 
 dependencies {
 	implementation(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
-	implementation("org.springframework:spring-webmvc")
+	implementation("net.xdob.springframework:spring-webmvc")
 
 	providedRuntime(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-tomcat"))
 	providedRuntime("org.apache.tomcat.embed:tomcat-embed-jasper")

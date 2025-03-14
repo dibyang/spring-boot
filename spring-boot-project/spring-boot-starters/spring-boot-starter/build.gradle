@@ -9,6 +9,6 @@ dependencies {
 	api(project(":spring-boot-project:spring-boot-autoconfigure"))
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-logging"))
 	api("jakarta.annotation:jakarta.annotation-api")
-	api("org.springframework:spring-core")
+	api("net.xdob.springframework:spring-core")
 	api("org.yaml:snakeyaml")
 }

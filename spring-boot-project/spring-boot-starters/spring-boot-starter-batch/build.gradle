@@ -4,8 +4,14 @@ plugins {
 
 description = "Starter for using Spring Batch"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter"))
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc"))
-	api("org.springframework.batch:spring-batch-core")
+	api("org.springframework.batch:spring-batch-core"){
+		exclude group: "org.springframework"
+	}
 }

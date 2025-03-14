@@ -4,7 +4,13 @@ plugins {
 
 description = "Starter for using Spring Data JDBC"
 
+checkRuntimeClasspathForUnnecessaryExclusions{
+	enabled = false
+}
+
 dependencies {
 	api(project(":spring-boot-project:spring-boot-starters:spring-boot-starter-jdbc"))
-	api("org.springframework.data:spring-data-jdbc")
+	api("org.springframework.data:spring-data-jdbc"){
+		exclude group:"org.springframework"
+	}
 }
