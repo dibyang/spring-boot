@@ -16,9 +16,12 @@
 
 package org.springframework.boot.autoconfigure.gson;
 
+import java.util.Objects;
+
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.LongSerializationPolicy;
+import com.google.gson.Strictness;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -75,9 +78,13 @@ public class GsonProperties {
 	private Boolean prettyPrinting;
 
 	/**
-	 * Whether to be lenient about parsing JSON that doesn't conform to RFC 4627.
+	 * Sets the strictness of this builder to the provided parameter. This changes how
+	 * strict the RFC 8259 JSON specification is enforced when parsing or writing JSON.
+	 * For details on this, refer to JsonReader. setStrictness(Strictness) and JsonWriter.
+	 * setStrictness(Strictness). Params: strictness – the new strictness mode. May not be
+	 * null.
 	 */
-	private Boolean lenient;
+	private Strictness strictness = null;
 
 	/**
 	 * Whether to disable the escaping of HTML characters such as '<', '>', etc.
@@ -153,12 +160,12 @@ public class GsonProperties {
 		this.prettyPrinting = prettyPrinting;
 	}
 
-	public Boolean getLenient() {
-		return this.lenient;
+	public Strictness getStrictness() {
+		return this.strictness;
 	}
 
-	public void setLenient(Boolean lenient) {
-		this.lenient = lenient;
+	public void setStrictness(Strictness strictness) {
+		this.strictness = Objects.requireNonNull(strictness);
 	}
 
 	public Boolean getDisableHtmlEscaping() {

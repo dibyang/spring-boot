@@ -34,6 +34,7 @@ import java.util.function.Consumer;
 import javax.validation.ValidatorFactory;
 
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -184,7 +185,9 @@ class WebFluxAutoConfigurationTests {
 			SimpleUrlHandlerMapping hm = context.getBean("resourceHandlerMapping", SimpleUrlHandlerMapping.class);
 			assertThat(hm.getUrlMap().get("/static/**")).isInstanceOf(ResourceWebHandler.class);
 			ResourceWebHandler staticHandler = (ResourceWebHandler) hm.getUrlMap().get("/static/**");
-			assertThat(staticHandler).extracting("locationValues").asList().hasSize(4);
+			assertThat(staticHandler).extracting("locationValues")
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
+				.hasSize(4);
 		});
 	}
 
@@ -571,7 +574,7 @@ class WebFluxAutoConfigurationTests {
 			.withBean(LowPrecedenceConfigurer.class, LowPrecedenceConfigurer::new)
 			.run((context) -> assertThat(context.getBean(DelegatingWebFluxConfiguration.class))
 				.extracting("configurers.delegates")
-				.asList()
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
 				.extracting((configurer) -> (Class) configurer.getClass())
 				.containsExactly(HighPrecedenceConfigurer.class, WebFluxConfig.class, LowPrecedenceConfigurer.class));
 	}

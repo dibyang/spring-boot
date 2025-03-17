@@ -443,7 +443,6 @@ class IntegrationAutoConfigurationTests {
 			.run((context) -> assertThat(context).hasFailed()
 				.getFailure()
 				.hasRootCauseExactlyInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class)
-				.getRootCause()
 				.asInstanceOf(InstanceOfAssertFactories.type(MutuallyExclusiveConfigurationPropertiesException.class))
 				.satisfies((ex) -> {
 					assertThat(ex.getConfiguredNames()).containsExactlyInAnyOrder("spring.integration.poller.cron",

@@ -418,7 +418,7 @@ bom {
 			]
 		}
 	}
-	library("Gson", "2.9.1") {
+	library("Gson", "2.12.1") {
 		group("com.google.code.gson") {
 			modules = [
 				"gson"
@@ -1170,7 +1170,7 @@ bom {
 			]
 		}
 	}
-	library("Logback", "1.2.12") {
+	library("Logback", "1.2.13") {
 		group("ch.qos.logback") {
 			modules = [
 				"logback-access",
@@ -1680,7 +1680,7 @@ bom {
 			]
 		}
 	}
-	library("SnakeYAML", "1.30") {
+	library("SnakeYAML", "2.2") {
 		group("org.yaml") {
 			modules = [
 				"snakeyaml"

@@ -38,7 +38,7 @@ subprojects {
 	}
 
 	afterEvaluate {
-		if (plugins.hasPlugin('org.springframework.boot.deployed') ) {
+		if (plugins.hasPlugin('org.springframework.boot.deployed')) {
 			// 将构建的包签名
 			signing {
 				sign publishing.publications.maven

@@ -20,6 +20,7 @@ import java.util.UUID;
 
 import javax.sql.DataSource;
 
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.LazyInitializationExcludeFilter;
@@ -136,7 +137,7 @@ class TransactionAutoConfigurationTests {
 			.run((context) -> {
 				TransactionManagerCustomizers customizers = context.getBean(TransactionManagerCustomizers.class);
 				assertThat(customizers).extracting("customizers")
-					.asList()
+					.asInstanceOf(InstanceOfAssertFactories.LIST)
 					.singleElement()
 					.isInstanceOf(TransactionProperties.class);
 			});

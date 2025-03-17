@@ -432,7 +432,7 @@ class OAuth2ResourceServerAutoConfigurationTests {
 				assertThat(context).hasSingleBean(OpaqueTokenIntrospector.class);
 				assertThat(context).hasSingleBean(JwtDecoder.class);
 				assertThat(getBearerTokenFilter(context)).extracting("authenticationManagerResolver.arg$1.providers")
-					.asList()
+					.asInstanceOf(InstanceOfAssertFactories.LIST)
 					.hasAtLeastOneElementOfType(JwtAuthenticationProvider.class);
 			});
 	}

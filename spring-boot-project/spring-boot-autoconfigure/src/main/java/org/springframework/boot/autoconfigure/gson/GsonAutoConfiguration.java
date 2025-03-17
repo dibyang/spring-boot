@@ -20,6 +20,7 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.Strictness;
 
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -87,7 +88,7 @@ public class GsonAutoConfiguration {
 			map.from(properties::getLongSerializationPolicy).to(builder::setLongSerializationPolicy);
 			map.from(properties::getFieldNamingPolicy).to(builder::setFieldNamingPolicy);
 			map.from(properties::getPrettyPrinting).toCall(builder::setPrettyPrinting);
-			map.from(properties::getLenient).toCall(builder::setLenient);
+			map.from(properties::getStrictness).whenNonNull().to(builder::setStrictness);
 			map.from(properties::getDisableHtmlEscaping).toCall(builder::disableHtmlEscaping);
 			map.from(properties::getDateFormat).to(builder::setDateFormat);
 		}

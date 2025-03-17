@@ -23,4 +23,5 @@ dependencies {
 		exclude group:"org.springframework"
 	}
 	api("net.xdob.springframework:spring-aspects")
+	api("net.xdob.springframework:spring-orm")
 }

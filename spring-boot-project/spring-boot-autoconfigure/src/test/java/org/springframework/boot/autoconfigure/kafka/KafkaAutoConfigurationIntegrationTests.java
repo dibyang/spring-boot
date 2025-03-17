@@ -28,6 +28,7 @@ import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.KTable;
 import org.apache.kafka.streams.kstream.Materialized;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledOnOs;
@@ -113,7 +114,7 @@ class KafkaAutoConfigurationIntegrationTests {
 		assertThat(listener).extracting(RetryListener::getKey, RetryListener::getReceived)
 			.containsExactly("foo", "bar");
 		assertThat(listener).extracting(RetryListener::getTopics)
-			.asList()
+			.asInstanceOf(InstanceOfAssertFactories.LIST)
 			.hasSize(5)
 			.containsSequence("testRetryTopic", "testRetryTopic-retry-0", "testRetryTopic-retry-1",
 					"testRetryTopic-retry-2", "testRetryTopic-retry-3");
