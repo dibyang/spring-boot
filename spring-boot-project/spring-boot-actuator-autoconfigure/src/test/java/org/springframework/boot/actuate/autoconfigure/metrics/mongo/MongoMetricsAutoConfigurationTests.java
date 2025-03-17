@@ -29,6 +29,8 @@ import io.micrometer.core.instrument.binder.mongodb.MongoCommandTagsProvider;
 import io.micrometer.core.instrument.binder.mongodb.MongoConnectionPoolTagsProvider;
 import io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener;
 import io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener;
+import org.assertj.core.api.AbstractListAssert;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.actuate.autoconfigure.metrics.test.MetricsRun;
@@ -62,7 +64,7 @@ class MongoMetricsAutoConfigurationTests {
 				assertThat(context).hasSingleBean(MongoMetricsCommandListener.class);
 				assertThat(getActualMongoClientSettingsUsedToConstructClient(context)).isNotNull()
 					.extracting(MongoClientSettings::getCommandListeners)
-					.asList()
+					.asInstanceOf(InstanceOfAssertFactories.LIST)
 					.containsExactly(context.getBean(MongoMetricsCommandListener.class));
 				assertThat(getMongoCommandTagsProviderUsedToConstructListener(context))
 					.isInstanceOf(DefaultMongoCommandTagsProvider.class);
@@ -168,7 +170,7 @@ class MongoMetricsAutoConfigurationTests {
 			assertThat(context).doesNotHaveBean(MongoMetricsCommandListener.class);
 			assertThat(getActualMongoClientSettingsUsedToConstructClient(context)).isNotNull()
 				.extracting(MongoClientSettings::getCommandListeners)
-				.asList()
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
 				.isEmpty();
 		};
 	}

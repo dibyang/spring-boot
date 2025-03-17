@@ -27,6 +27,7 @@ import java.util.function.Function;
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import reactor.core.publisher.Mono;
@@ -144,7 +145,8 @@ class WebMvcEndpointChildContextConfigurationIntegrationTests {
 					(value) -> assertThat(value).asString().contains("MethodArgumentNotValidException"));
 			assertThat(body).hasEntrySatisfying("message",
 					(value) -> assertThat(value).asString().contains("Validation failed"));
-			assertThat(body).hasEntrySatisfying("errors", (value) -> assertThat(value).asList().isNotEmpty());
+			assertThat(body).hasEntrySatisfying("errors", (value) -> assertThat(value)
+					.asInstanceOf(InstanceOfAssertFactories.LIST).isNotEmpty());
 		}));
 	}
 

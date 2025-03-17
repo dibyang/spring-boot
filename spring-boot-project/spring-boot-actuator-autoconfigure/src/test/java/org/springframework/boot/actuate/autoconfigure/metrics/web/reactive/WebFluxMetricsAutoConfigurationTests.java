@@ -17,6 +17,7 @@
 package org.springframework.boot.actuate.autoconfigure.metrics.web.reactive;
 
 import io.micrometer.core.instrument.MeterRegistry;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -121,7 +122,7 @@ class WebFluxMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TagsContributorsConfiguration.class).run((context) -> {
 			assertThat(context).hasSingleBean(DefaultWebFluxTagsProvider.class);
 			assertThat(context.getBean(DefaultWebFluxTagsProvider.class)).extracting("contributors")
-				.asList()
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
 				.hasSize(2);
 		});
 	}

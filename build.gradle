@@ -42,6 +42,8 @@ allprojects {
 	configurations.all {
 		resolutionStrategy.cacheChangingModulesFor 0, "minutes"
 	}
+
+
 }
 
 tasks.named("checkstyleNohttp").configure {
@@ -54,6 +56,9 @@ subprojects {
 		if (plugins.hasPlugin('java') || plugins.hasPlugin('java-library')) {
 			test {
 				enabled = false
+			}
+			tasks.withType(JavaCompile) {
+				options.compilerArgs << "-Xlint:-deprecation"
 			}
 		}
 		if (plugins.hasPlugin('org.springframework.boot.starter') ) {

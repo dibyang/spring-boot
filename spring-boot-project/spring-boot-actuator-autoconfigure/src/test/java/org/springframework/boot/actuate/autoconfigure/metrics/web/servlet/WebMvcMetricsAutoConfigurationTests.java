@@ -30,6 +30,7 @@ import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.Tag;
 import io.micrometer.core.instrument.Timer;
 import io.micrometer.core.instrument.distribution.HistogramSnapshot;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
@@ -212,7 +213,7 @@ class WebMvcMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TestController.class)
 			.withConfiguration(AutoConfigurations.of(MetricsAutoConfiguration.class, WebMvcAutoConfiguration.class))
 			.run((context) -> assertThat(context.getBean(RequestMappingHandlerMapping.class)).extracting("interceptors")
-				.asList()
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
 				.extracting((item) -> (Class) item.getClass())
 				.contains(LongTaskTimingHandlerInterceptor.class));
 	}
@@ -221,7 +222,8 @@ class WebMvcMetricsAutoConfigurationTests {
 	void whenTagContributorsAreDefinedThenTagsProviderUsesThem() {
 		this.contextRunner.withUserConfiguration(TagsContributorsConfiguration.class).run((context) -> {
 			assertThat(context).hasSingleBean(DefaultWebMvcTagsProvider.class);
-			assertThat(context.getBean(DefaultWebMvcTagsProvider.class)).extracting("contributors").asList().hasSize(2);
+			assertThat(context.getBean(DefaultWebMvcTagsProvider.class)).extracting("contributors")
+					.asInstanceOf(InstanceOfAssertFactories.LIST).hasSize(2);
 		});
 	}
 

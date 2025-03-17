@@ -102,8 +102,7 @@ class ElasticMetricsExportAutoConfigurationTests {
 					"management.metrics.export.elastic.user-name:alice")
 			.run((context) -> assertThat(context).hasFailed()
 				.getFailure()
-				.getRootCause()
-				.isInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
+					.hasRootCauseInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
 	}
 
 	@Test
@@ -113,8 +112,7 @@ class ElasticMetricsExportAutoConfigurationTests {
 					"management.metrics.export.elastic.password:secret")
 			.run((context) -> assertThat(context).hasFailed()
 				.getFailure()
-				.getRootCause()
-				.isInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
+				.hasRootCauseInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
 	}
 
 	@Configuration(proxyBeanMethods = false)
