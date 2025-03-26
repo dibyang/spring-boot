@@ -223,7 +223,8 @@ class WebMvcMetricsAutoConfigurationTests {
 		this.contextRunner.withUserConfiguration(TagsContributorsConfiguration.class).run((context) -> {
 			assertThat(context).hasSingleBean(DefaultWebMvcTagsProvider.class);
 			assertThat(context.getBean(DefaultWebMvcTagsProvider.class)).extracting("contributors")
-					.asInstanceOf(InstanceOfAssertFactories.LIST).hasSize(2);
+				.asInstanceOf(InstanceOfAssertFactories.LIST)
+				.hasSize(2);
 		});
 	}
 

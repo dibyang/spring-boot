@@ -42,7 +42,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.io.TempDir;
 import org.slf4j.bridge.SLF4JBridgeHandler;
-import org.slf4j.impl.StaticLoggerBinder;
 
 import org.springframework.boot.DefaultBootstrapContext;
 import org.springframework.boot.SpringApplication;
@@ -101,7 +100,7 @@ class LoggingApplicationListenerTests {
 
 	private final LoggingApplicationListener listener = new LoggingApplicationListener();
 
-	private final LoggerContext loggerContext = (LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory();
+	private final LoggerContext loggerContext = (LoggerContext) org.slf4j.LoggerFactory.getILoggerFactory();
 
 	private final ch.qos.logback.classic.Logger logger = this.loggerContext.getLogger(getClass());
 

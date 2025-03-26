@@ -21,6 +21,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.util.StreamUtils;
@@ -105,7 +106,7 @@ abstract class AbstractJsonParserTests {
 			.parseMap("{\"foo\":[{\"foo\":\"bar\",\"spam\":1},{\"foo\":\"baz\",\"spam\":2}]}");
 		assertThat(map).hasSize(1);
 		assertThat(((List<Object>) map.get("foo"))).hasSize(2);
-		assertThat(map.get("foo")).asList().allMatch(Map.class::isInstance);
+		assertThat(map.get("foo")).asInstanceOf(InstanceOfAssertFactories.LIST).allMatch(Map.class::isInstance);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -115,7 +116,7 @@ abstract class AbstractJsonParserTests {
 			.parseMap(" {\"foo\": [ { \"foo\" : \"bar\" , \"spam\" : 1 } , { \"foo\" : \"baz\" , \"spam\" : 2 } ] } ");
 		assertThat(map).hasSize(1);
 		assertThat(((List<Object>) map.get("foo"))).hasSize(2);
-		assertThat(map.get("foo")).asList().allMatch(Map.class::isInstance);
+		assertThat(map.get("foo")).asInstanceOf(InstanceOfAssertFactories.LIST).allMatch(Map.class::isInstance);
 	}
 
 	@Test

@@ -24,7 +24,6 @@ import io.micrometer.core.instrument.MeterRegistry;
 import io.micrometer.core.instrument.binder.MeterBinder;
 import io.micrometer.core.instrument.composite.CompositeMeterRegistry;
 import org.junit.jupiter.api.Test;
-import org.slf4j.impl.StaticLoggerBinder;
 
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.boot.actuate.autoconfigure.metrics.export.atlas.AtlasMetricsExportAutoConfiguration;
@@ -78,8 +77,7 @@ class MeterRegistryConfigurerIntegrationTests {
 		new ApplicationContextRunner().with(MetricsRun.limitedTo(JmxMetricsExportAutoConfiguration.class))
 			.withConfiguration(AutoConfigurations.of(LogbackMetricsAutoConfiguration.class))
 			.run((context) -> {
-				Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
-					.getLogger("test-logger");
+				Logger logger = ((LoggerContext) org.slf4j.LoggerFactory.getILoggerFactory()).getLogger("test-logger");
 				logger.error("Error.");
 				Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
 				assertThat(registriesByName).hasSize(1);
@@ -95,8 +93,7 @@ class MeterRegistryConfigurerIntegrationTests {
 					PrometheusMetricsExportAutoConfiguration.class))
 			.withConfiguration(AutoConfigurations.of(LogbackMetricsAutoConfiguration.class))
 			.run((context) -> {
-				Logger logger = ((LoggerContext) StaticLoggerBinder.getSingleton().getLoggerFactory())
-					.getLogger("test-logger");
+				Logger logger = ((LoggerContext) org.slf4j.LoggerFactory.getILoggerFactory()).getLogger("test-logger");
 				logger.error("Error.");
 				Map<String, MeterRegistry> registriesByName = context.getBeansOfType(MeterRegistry.class);
 				assertThat(registriesByName).hasSize(3);

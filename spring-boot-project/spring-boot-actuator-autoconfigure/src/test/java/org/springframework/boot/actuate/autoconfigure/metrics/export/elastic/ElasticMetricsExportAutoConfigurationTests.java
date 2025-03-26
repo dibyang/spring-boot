@@ -102,7 +102,7 @@ class ElasticMetricsExportAutoConfigurationTests {
 					"management.metrics.export.elastic.user-name:alice")
 			.run((context) -> assertThat(context).hasFailed()
 				.getFailure()
-					.hasRootCauseInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
+				.hasRootCauseInstanceOf(MutuallyExclusiveConfigurationPropertiesException.class));
 	}
 
 	@Test

@@ -145,8 +145,8 @@ class WebMvcEndpointChildContextConfigurationIntegrationTests {
 					(value) -> assertThat(value).asString().contains("MethodArgumentNotValidException"));
 			assertThat(body).hasEntrySatisfying("message",
 					(value) -> assertThat(value).asString().contains("Validation failed"));
-			assertThat(body).hasEntrySatisfying("errors", (value) -> assertThat(value)
-					.asInstanceOf(InstanceOfAssertFactories.LIST).isNotEmpty());
+			assertThat(body).hasEntrySatisfying("errors",
+					(value) -> assertThat(value).asInstanceOf(InstanceOfAssertFactories.LIST).isNotEmpty());
 		}));
 	}
 

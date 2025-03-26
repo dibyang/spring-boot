@@ -18,10 +18,12 @@ package org.springframework.boot.context.config;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Supplier;
 
 import org.apache.commons.logging.Log;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 import org.springframework.boot.BootstrapContext;
@@ -60,9 +62,9 @@ class ConfigDataLoadersTests {
 	@Test
 	void createWhenLoaderHasDeferredLogFactoryParameterInjectsDeferredLogFactory() {
 		ConfigDataLoaders loaders = new ConfigDataLoaders(this.logFactory, this.bootstrapContext, null,
-				Arrays.asList(DeferredLogFactoryConfigDataLoader.class.getName()));
+				Collections.singletonList(DeferredLogFactoryConfigDataLoader.class.getName()));
 		assertThat(loaders).extracting("loaders")
-			.asList()
+			.asInstanceOf(InstanceOfAssertFactories.LIST)
 			.satisfies(this::containsValidDeferredLogFactoryConfigDataLoader);
 	}
 
@@ -75,7 +77,7 @@ class ConfigDataLoadersTests {
 	@Test
 	void createWhenLoaderHasBootstrapParametersInjectsBootstrapContext() {
 		new ConfigDataLoaders(this.logFactory, this.bootstrapContext, null,
-				Arrays.asList(BootstrappingConfigDataLoader.class.getName()));
+				Collections.singletonList(BootstrappingConfigDataLoader.class.getName()));
 		assertThat(this.bootstrapContext.get(String.class)).isEqualTo("boot");
 	}
 
@@ -83,7 +85,7 @@ class ConfigDataLoadersTests {
 	void loadWhenSingleLoaderSupportsLocationReturnsLoadedConfigData() throws Exception {
 		TestConfigDataResource location = new TestConfigDataResource("test");
 		ConfigDataLoaders loaders = new ConfigDataLoaders(this.logFactory, this.bootstrapContext, null,
-				Arrays.asList(TestConfigDataLoader.class.getName()));
+				Collections.singletonList(TestConfigDataLoader.class.getName()));
 		ConfigData loaded = loaders.load(this.context, location);
 		assertThat(getLoader(loaded)).isInstanceOf(TestConfigDataLoader.class);
 	}
@@ -101,7 +103,7 @@ class ConfigDataLoadersTests {
 	void loadWhenNoLoaderSupportsLocationThrowsException() {
 		TestConfigDataResource location = new TestConfigDataResource("test");
 		ConfigDataLoaders loaders = new ConfigDataLoaders(this.logFactory, this.bootstrapContext, null,
-				Arrays.asList(NonLoadableConfigDataLoader.class.getName()));
+				Collections.singletonList(NonLoadableConfigDataLoader.class.getName()));
 		assertThatIllegalStateException().isThrownBy(() -> loaders.load(this.context, location))
 			.withMessage("No loader found for resource 'test'");
 	}
@@ -123,7 +125,7 @@ class ConfigDataLoadersTests {
 		MockPropertySource propertySource = new MockPropertySource();
 		propertySource.setProperty("loader", loader);
 		propertySource.setProperty("resource", resource);
-		List<PropertySource<?>> propertySources = Arrays.asList(propertySource);
+		List<PropertySource<?>> propertySources = Collections.singletonList(propertySource);
 		return new ConfigData(propertySources);
 	}
 

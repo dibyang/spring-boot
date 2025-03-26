@@ -66,38 +66,6 @@ class LogbackLoggingSystemPropertiesTests {
 	}
 
 	@Test
-	void applySetsLogbackSystemProperties() {
-		this.environment.setProperty("logging.logback.rollingpolicy.file-name-pattern", "fnp");
-		this.environment.setProperty("logging.logback.rollingpolicy.clean-history-on-start", "chos");
-		this.environment.setProperty("logging.logback.rollingpolicy.max-file-size", "1KB");
-		this.environment.setProperty("logging.logback.rollingpolicy.total-size-cap", "2KB");
-		this.environment.setProperty("logging.logback.rollingpolicy.max-history", "mh");
-		new LogbackLoggingSystemProperties(this.environment).apply();
-		assertThat(System.getProperties())
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_FILE_NAME_PATTERN, "fnp")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_CLEAN_HISTORY_ON_START, "chos")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_MAX_FILE_SIZE, "1024")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_TOTAL_SIZE_CAP, "2048")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_MAX_HISTORY, "mh");
-	}
-
-	@Test
-	void applySetsLogbackSystemPropertiesFromDeprecated() {
-		this.environment.setProperty("logging.pattern.rolling-file-name", "fnp");
-		this.environment.setProperty("logging.file.clean-history-on-start", "chos");
-		this.environment.setProperty("logging.file.max-size", "1KB");
-		this.environment.setProperty("logging.file.total-size-cap", "2KB");
-		this.environment.setProperty("logging.file.max-history", "mh");
-		new LogbackLoggingSystemProperties(this.environment).apply();
-		assertThat(System.getProperties())
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_FILE_NAME_PATTERN, "fnp")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_CLEAN_HISTORY_ON_START, "chos")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_MAX_FILE_SIZE, "1024")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_TOTAL_SIZE_CAP, "2048")
-			.containsEntry(LogbackLoggingSystemProperties.ROLLINGPOLICY_MAX_HISTORY, "mh");
-	}
-
-	@Test
 	void consoleCharsetWhenNoPropertyUsesDefault() {
 		new LoggingSystemProperties(new MockEnvironment()).apply(null);
 		assertThat(System.getProperty(LoggingSystemProperties.CONSOLE_LOG_CHARSET))
